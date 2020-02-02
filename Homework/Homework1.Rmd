@@ -1,0 +1,326 @@
+---
+title: "HomeWork1"
+author: "Umais Siddiqui"
+date: "1/31/2020"
+output: html_document
+css: ./homework.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readxl)
+```
+
+<img style="vertical-align=top" src="question1.png">
+
+**(a) what does each row of the data matrix represent?**
+
+
+
+<div>
+<label style="color:red"> Answer (a)</label>
+
+
+
+
+<p style="padding:10px;border:1px solid silver;border-radius:5px;width:100%;height:50px;color:blue;">
+**Each row of the Data Matrix Represents a smoking habit of an indvidual U.K resident it is also called a case or observational unit.**
+</p>
+</div>
+
+```{r}
+df<-data.frame(read_xls("11263-Smoking_tcm86-13253.xls"))
+head(df)
+```
+
+
+**(b) How many participants were included in the survey**
+
+
+
+
+<label style="color:red"> Answer (b)</label>
+
+<p style="padding:10px;border:1px solid silver;border-radius:5px;width:100%;height:50px;color:blue;">
+**A total of `r nrow(df)` were included in the survey.** 
+</p>
+
+**(c)Indicate whether each variable included in the survey is numerical or categorical . If numerical , identify as continious or discrete. If categorical , Indicate if the variable is ordinal.**
+
+
+
+<label style="color:red"> Answer (c)</label>
+
+<p style="padding:10px;border:1px solid silver;border-radius:5px;width:100%;height:80px;color:blue;">
+**Lets examine each variable to determine the type. We will be making a use of unique function in R that will provide us with all the distinct values for a variable. This is just to give us a better understanding of the data contained in the variable and can help us make a determination as to what type of variable it is.**
+</p>
+<hr>
+<h4>1. Marital Status</h4>
+<hr>
+
+```{r}
+unique(df$Marital.Status)
+```
+
+
+<div style="border:1px solid silver; border-radius:5px;margin-bottom:10px;">
+<p style="padding-left:10px;margin:10px;">Marital.Status is a Categorical variable as no numerical operation of addition or substraction can be applied. It is also not
+ordinal as there is no specific order to the marital status a person can be single then get married then divorced and then married again. 
+</p>
+</div>
+
+<hr>
+<h4>2. Highest Qualifiation</h4>
+<hr>
+
+```{r}
+unique(df$Highest.Qualification)
+```
+<div style="border:1px solid silver; border-radius:5px;margin-bottom:10px;">
+<p style="padding-left:10px;margin:10px;">Highest Qualification variable is also categorical but is ordinal as it needs to happen in a specific order. 
+</p>
+</div>
+
+
+<hr>
+<h4>3. Nationality</h4>
+<hr>
+
+```{r}
+unique(df$Nationality)
+```
+<div style="border:1px solid silver; border-radius:5px;margin-bottom:10px;">
+<p style="padding-left:10px;margin:10px;">**Nationality:** is categorical    
+</p>
+</div>
+
+<hr>
+<h4>4. Ethnicity</h4>
+<hr>
+
+```{r}
+unique(df$Ethnicity)
+```
+<div style="border:1px solid silver; border-radius:5px;margin-bottom:10px;">
+<p style="padding-left:10px;margin:10px;">**Ethnicity:** is categorical    
+</p>
+</div>
+
+
+<hr>
+<h4>5. Gross Income</h4>
+<hr>
+
+```{r}
+unique(df$Gross.Income)
+```
+<div style="border:1px solid silver; border-radius:5px;margin-bottom:10px;">
+<p style="padding-left:10px;margin:10px;">**GrossIncome:** is also categorical as it is divided in to diffferent categories such as can be seen above.
+</p>
+</div>
+
+
+<hr>
+<h4>6. Region</h4>
+<hr>
+
+```{r}
+unique(df$Region)
+```
+<div style="border:1px solid silver; border-radius:5px;margin-bottom:10px;">
+<p style="padding-left:10px;margin:10px;">**Region:** is also categorical as it is divided in to diffferent categories such as can be seen above.
+</p>
+</div>
+
+
+<hr>
+<h4>7. Smoke</h4>
+<hr>
+
+```{r}
+unique(df$Smoke)
+```
+<div style="border:1px solid silver; border-radius:5px;margin-bottom:10px;">
+<p style="padding-left:10px;margin:10px;">**Smoke:** is also categorical as it is divided in to diffferent categories such as can be seen above.
+</p>
+</div>
+
+
+<hr>
+<h4>8. Amount Weekends</h4>
+<hr>
+
+```{r}
+unique(df$Amount.Weekends)
+
+```
+<div style="border:1px solid silver; border-radius:5px;margin-bottom:10px;">
+<p style="padding-left:10px;margin:10px;">**Amt.Weekends:** Is a Numerical and discrete as a person smokes no cigarettes which is 0 or more but it is a whole number therefore it is discrete. 
+</p>
+</div>
+
+<hr>
+<h4>9. Amount Weekdays</h4>
+<hr>
+
+```{r}
+unique(df$Amount.Weekdays)
+
+```
+<div style="border:1px solid silver; border-radius:5px;margin-bottom:10px;">
+<p style="padding-left:10px;margin:10px;">**Amount.Weekdays:** Is a Numerical and discrete as a person smokes no cigarettes which is 0 or more but it is a whole number therefore it is discrete. 
+</p>
+</div>
+
+
+<hr>
+<h4>10. Type</h4>
+<hr>
+
+```{r}
+unique(df$Type)
+
+```
+<div style="border:1px solid silver; border-radius:5px;margin-bottom:10px;">
+<p style="padding-left:10px;margin:10px;">**Type:** Is Categorical 
+</p>
+</div>
+
+
+<hr>
+<h4>11. Sex</h4>
+<hr>
+
+```{r}
+unique(df$Sex)
+
+```
+<div style="border:1px solid silver; border-radius:5px;margin-bottom:10px;">
+<p style="padding-left:10px;margin:10px;">**Sex:** is a categorical data type. 
+</p>
+</div>
+
+<hr>
+<h4>12. Age</h4>
+<hr>
+
+```{r}
+unique(df$Age)
+
+```
+<div style="border:1px solid silver; border-radius:5px;margin-bottom:10px;">
+<p style="padding-left:10px;margin:10px;">**Sex:** is a Numerical Data Type and is dicrete.
+</p>
+</div>
+
+
+<img style="vertical-align=top" src="question2.png">
+
+
+
+<label style="color:red"> Answer (a)</label>
+
+
+<p style="padding:10px;border:1px solid silver;border-radius:5px;width:100%;height:50px;color:blue;">
+160 children between the ages of 5 and 15
+</p>
+
+
+
+
+<label style="color:red"> Answer (b)</label>
+
+
+<p style="padding:10px;border:1px solid silver;border-radius:5px;width:100%;height:190px;color:blue;">
+Before we answer the question it is important to understand the question being asked in the experiment. The question is will the students cheat if they were explicitly told not to. There are certain key pieces of information that is missing for us to make a conclusion if the results may be generalized or not. The information we may need to know is how was the sampling done was it using the randomization technique or not. If a randmization technique was used was it simple, Stratified , blocked etc. Also there may be varying other influences as to whether a child may cheat or not such as the upbringing , family, cultural aspects, ethical and religious aspects. In order to genralize the results a more in depth research would be required rather than just collecting the four data elements collected in this research. So, I would say that no we cannot generalize the results. In some way we can say that a causal relationship can established using the research as we can create a variable called "InstructedNotToCheat" with possible categories of "Yes" and "No" this will be the explanotarey variable and the response variable will be whether the child cheated or not so there could be a relationship formed between the two.  
+</p>
+
+
+<img style="vertical-align=top" src="question3.png">
+
+
+
+<label style="color:red"> Answer (a)</label>
+
+
+
+<p style="padding:10px;border:1px solid silver;border-radius:5px;width:100%;height:110px;color:blue;">
+Based on this article we can conclude that smoking may cause dementia later in life as the results and data suggest that those that smoke are at high risk of having this disease which is 25% more than the non smokers. Also as the quantity of smoking increases from less than a pack 1 to two packs a day the chances are 44% more than non smokers and it rises to 50% for those who smoke more than 2 packs. The evidence collected is pretty strong although there could be other factors that may have impacted the dementia with a combination of smoking like weather , geograpy and genetics but still the number is pretty high.
+</p>
+
+
+
+<label style="color:red"> Answer (b)</label>
+
+
+<p style="padding:10px;border:1px solid silver;border-radius:5px;width:100%;height:110px;color:blue;">
+I don't believe the statment is justified as although the kids with behavioral concerns were twice as likely to have sleep disorders that does not neccessarily mean that sleep disorder is what causes the behavioural issues. It could be the other way around where bullying may lead to sleep disorders. But based on this article it shows that this was an observational study and a causal relationship cannot be conducted based on observational study they would have to conduct an experiment to determine that.So I do not think it is justifiable to say that sleep disorders lead to bullying. 
+</p>
+
+
+
+<img style="vertical-align=top" src="question4.png">
+
+
+
+<label style="color:red"> Answer (a)</label>
+
+
+
+<p style="padding:10px;border:1px solid silver;border-radius:5px;width:100%;height:60px;color:blue;">
+This is a experimental study as the researchers are conducting an experiment and then using the random stratified sampling method to assign members to a treatment group or a controlled group.
+</p>
+
+
+<label style="color:red"> Answer (b)</label>
+
+
+
+<p style="padding:10px;border:1px solid silver;border-radius:5px;width:100%;height:60px;color:blue;">
+The treatment group is the group that is being told to exercise twice a week and the controlled group is the one that is instructed not to exercise.
+</p>
+
+
+
+
+<label style="color:red"> Answer (c)</label>
+
+
+
+<p style="padding:10px;border:1px solid silver;border-radius:5px;width:100%;height:50px;color:blue;">
+The study does make use of blocking as half of the patients from each stratified group is assigned to the treatment group where as the other half is assigned to the controlled group. The blocking variable is the Age range.
+</p>
+
+
+
+<label style="color:red"> Answer (d)</label>
+
+
+
+<p style="padding:10px;border:1px solid silver;border-radius:5px;width:100%;height:50px;color:blue;">
+The study does not make use of blinding as each person knows which group they are in and so do the researchers.
+</p>
+
+
+
+
+<label style="color:red"> Answer (e)</label>
+
+
+
+<p style="padding:10px;border:1px solid silver;border-radius:5px;width:100%;height:160px;color:blue;">
+Yes a cause a relationship can be established between the exercise and mental health as in this case the exercise can easily be the explanatory variable and the mental health category variable can be the response variable. As for being able to genralize to a larger population I would say since the sampling method is stratified and blocking is being used the results can be more accurate however what is the sample size and how many individuals from each group are in the research is unkonwn. Also there is some other data that may need to be collected such as income level, eating habits, sleep patterns and weather conditons of where they live as I believe these things can also have an impact on mental health rather than just exercise alone. So personally I won't jump to genralizing the results to a larger population before doing a more deeper analysis of the subject.
+</p>
+
+
+
+<label style="color:red"> Answer (f)</label>
+
+
+
+
+<p style="padding:10px;border:1px solid silver;border-radius:5px;width:100%;height:100px;color:blue;">
+I would say this is a very interesting study and should get funding as mental health is a very important issue in the society at large and if this study can determine a cause a relationship between exercise and mental health then it will allow people to be able to improve their mental health in this way. However, I would factor in collecting other data from the population such as their income level, education level, eating habits, sleep patterns and the geographical location.
+</p>
+
+  
