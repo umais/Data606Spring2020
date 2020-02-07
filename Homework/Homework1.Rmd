@@ -209,7 +209,7 @@ unique(df$Age)
 
 ```
 <div style="border:1px solid silver; border-radius:5px;margin-bottom:10px;">
-<p style="padding-left:10px;margin:10px;">**Sex:** is a Numerical Data Type and is dicrete.
+<p style="padding-left:10px;margin:10px;">**Age:** is a Numerical Data Type and is dicrete.
 </p>
 </div>
 

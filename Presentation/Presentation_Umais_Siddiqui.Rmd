@@ -1,0 +1,157 @@
+---
+title: "Presentation"
+author: "Umais Siddiqui"
+date: "2/3/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Problem 2.15:
+
+
+
+
+For each of the following, state whether you expect the distribution to be symmetric, right skewed or left skewed. Also specify whether the mean or median would best represent a typical observation in the data, and whether the variability of observations would be best represented using the standard deviation or IQR. Explain your reasoning.
+
+
+(a) Number Of Pets Per Houseold.
+(b) Distance to work i.e number of miles between work and home.
+(c) Heights of adult males.
+
+
+
+## (a) Number of Pets Per Household
+
+### Assumptions:
+
+    Assuming very few households will have many pets for most people who have pets they will be one or two and many households may not have pets at all.
+
+### Simulated Sampling:         
+Based on the assumption above I will be doing a simulated Sampling to generate data with a sample size of 10000. We can then observe the results and be able to suggest what the distribution looks like and whether the mean or median would best describe a typical observation.
+
+```{r pressure, echo=TRUE}
+
+SampleSize<-10000
+x <- data.frame("SerialNumber" = 1:SampleSize, 
+                "PetsPerHousehold" = c(
+                                      rep(0,.37*SampleSize),
+                                      rep(1,.34*SampleSize),
+                                      rep(2,.16*SampleSize),
+                                      rep(3,.1*SampleSize),
+                                      rep(4,.015*SampleSize),
+                                      rep(5,0.01*SampleSize),
+                                      rep(8,0.005*SampleSize)
+                                      ),
+                stringsAsFactors = FALSE)
+
+barplot(table(x$PetsPerHousehold))
+
+```
+
+ We can see from the generated bar chart that the data is right skewed or positive skewed. We can see a long tail towards the right.
+
+```{r}
+boxplot(x$PetsPerHousehold)
+
+summary<-summary(x$PetsPerHousehold)
+
+summary
+```
+
+We can also see from the summary table that the 
+
+Mean is `r summary["Mean"]` 
+
+Median is `r summary["Median"]`
+
+The IQR is `r summary["3rd Qu."]-summary["1st Qu."]`
+
+In this situation since a typical value is `r summary["Median"]` and the distribution seems to be right skewed it is better that the median be used to represent the typical value and to describe the variability in the data we can use the IQR .
+
+
+
+## (b) Distance to work i.e number of miles between work and home.
+
+
+Answer: 
+
+### Assumption
+Assuming that most people live close to their work and only a few very far away from work. I will do some analysis to find out what can be the distribution for the Distance to work.
+
+### Simulated Sampling
+
+Again using the sample size of 10,000 I will generate a simulated sample data set using R and we can see that using the assumption above how our data looks like.
+
+```{r}
+
+dfDistanceToWork<-data.frame("SN"=1:SampleSize,
+                              DistanceToWork=c(
+                                                rep(20.6,.08*SampleSize),                                                         rep(2.5,.20*SampleSize),
+                                                rep(3.5,.15*SampleSize),
+                                                rep(4.0,.15*SampleSize),
+                                                rep(5.0,.1*SampleSize),
+                                                rep(1,.26*SampleSize),
+                                                rep(40,.02*SampleSize),
+                                                rep(14.7,.04*SampleSize)
+                                                )
+                             )
+
+
+
+barplot(table(dfDistanceToWork$DistanceToWork))
+
+```
+
+```{r}
+summary(dfDistanceToWork$DistanceToWork)
+boxplot(dfDistanceToWork$DistanceToWork)
+sd(dfDistanceToWork$DistanceToWork)
+
+var(dfDistanceToWork$DistanceToWork)
+```
+
+Also we can see above from the summary and box plot that the typical value can be best explained by using the median and the variability in the data can be best represented by using the IQR.
+
+## (c) Heights of adult males.
+
+### Assumption
+Usually the heights of Males will have various different types of heights almost very close to each other maybe with a few above average and a few below average but still the difference will not be very much. 
+
+### Simulated Sampling
+Say for example we take a sample size of 1000 men and assume that 8 percent will be about 4 feet , 16 percent about 4.4 6 percent about 4.8 and 15 percent about 5.2 18.5 percent around 5.6 , 20 percent around 5.8, 12 percent 5.10, 3.5 percent 6 feet , 1%6.5   
+
+
+
+```{r}
+dfHeightMales<-data.frame("SN"=1:SampleSize,Height=c(
+  
+                             rep(4,.08*SampleSize),
+                             rep(4.4,.16*SampleSize),
+                             rep(4.8,.06*SampleSize),
+                             rep(5.2,.15*SampleSize),
+                             rep(5.6,.185*SampleSize),
+                             rep(5.8,.20*SampleSize),
+                             rep(5.10,.120*SampleSize),
+                             rep(6,.035*SampleSize),
+                             rep(6.5,.01*SampleSize)
+                             )
+                             )
+
+
+head(dfHeightMales)
+barplot(table(dfHeightMales$Height))
+summary(dfHeightMales$Height)
+boxplot(dfHeightMales$Height)
+```
+
+As can be seen from the results of the bar plot the distribution seems to be symmetrical in nature as there is not left or right tail and the data seems to be evenly distributed on both sides of the mean and median. Therefore the distribution is Symmetrical and the mean would be the best way to describe a typical observation and standard deviation can be used to explain the variability in the data.
+
+```{r}
+sd(dfHeightMales$Height)
+
+var(dfHeightMales$Height)
+
+```

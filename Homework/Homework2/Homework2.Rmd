@@ -1,0 +1,222 @@
+---
+title: "Homework Chapter 2 - Summarizing Data"
+author: "Umais Siddiqui"
+
+date: "2/4/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Problem 2.33
+<img style="vertical-align=top" src="question1.png">
+
+
+
+
+
+
+
+<div>
+<label style="color:red"> Answer (Problem 2.33)</label>
+
+
+### Approach
+
+
+1. The Data provided in the question will be loaded in a data frame see below and then we will display the summary of the data and also show the box plot.
+
+2. We will compare the box blot with the results in the summary to ensure it looks correct.
+
+### Preperation
+
+```{r}
+
+dfFinal<-  data.frame("SN" = 1:20, "Scores" = c(57, 66, 69, 71, 72, 73, 74, 77, 78, 78, 79, 79, 81, 81, 82, 83, 83, 88, 89, 94), stringsAsFactors = FALSE)
+
+
+summary(dfFinal$Scores)
+```
+<p style="padding:10px;border:1px solid silver;border-radius:5px;width:100%;height:50px;">
+Now Drawing the plot below 
+</p>
+
+### Result
+
+```{r}
+
+boxplot(dfFinal$Scores)
+```
+
+### Explaination
+
+As we can see in the boxplot the median is matching with the reults in the summary and the outlier of min is showing up in the box plot and can be seen below the bottom whisker.
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+## Problem 2.10
+
+<img style="vertical-align=top" src="question2.png">
+
+
+<div>
+<label style="color:red"> Answer (Problem 2.10)</label>
+
+
+</div>
+
+### (a) Solution
+
+This histogram in Figure (a) matches with boxplot in figure 2
+
+
+The Distribution in the histogram in Figure (a) is symmetrical although it seems slightly right skewed as there are more ouliers on the right side then on the left also the mean and median are very close.   
+
+
+
+### (b) Solution
+
+This Histogram in Figure (b) matches with boxplot in Figure 3
+
+
+The distribution in this histogram shown in Figure (b) is symmetrical as the mean and median are very close and the distance between the median and the 3rd quartile and the median and the 1st quartile are equal also the whiskers on both sides are of equal lenght and there are no outliers. 
+
+
+
+
+
+### (c) Solution
+
+Histogram in Figure (c) mathces with the Boxplot in Figure 1 
+
+
+The distribution of this histogram in Figure (c) is right skewed as there are a number of outliers on the right side stretching the histogram to the positive side and that will affect the mean.
+
+## Problem 2.16
+
+<img style="vertical-align=top" src="question3.png">
+
+
+<div>
+<label style="color:red"> Answer (Problem 2.10)</label>
+
+### (a) Answer
+
+For this data I expect the distribution to be right skewed as there are a meaningful number of houses that are $6,000,000 and just a handful of those can affect the mean and shift it towards the right making it higher then the median value. I would say that the median would be the best way to represent a typical observation and the IQR should be used to describe the variability in the data.
+
+### (b) Answer
+
+For this data I expect the distribution to be symmetrical in nature but slightly right skewed as there are a few houses  that are $1,200,000 even few very high prices may affect the mean and shift it towards the right making it higher then the median value. I would say that the median would be the best way to represent a typical observation and the IQR should be used to describe the variability in the data.
+
+
+### (c) Answer
+
+For this data I expect the distribution to right skewed as there is a natural boundry at 0 and there are very few students who will drink excessively. The median would be the best way to describe a typical observation and the IQR would best represent the variability in the data.
+
+
+### (d) Answer
+
+For this data I expect the distribution to be symmetrical as there are only a handful of executives at the top level making much higher salaries then the rest of the employees. I would say that the mean can be used to describe a typical observation and Standard deviation may be used to represent the variability in the data .
+
+</div>
+
+
+
+
+
+
+## Problem 2.26
+
+<img style="vertical-align=top" src="question4.png">
+<img style="vertical-align=top" src="plot.png">
+
+
+
+
+
+### (a)
+
+
+I believe based on the Mosaic Plot that the survival was not independant of the whether the patient got the treatment or not because based on the mosaic plot more than 80 % of the peple who did not recieve the treatment died where as less than 20 percent survived however for the ones that did recieve the treatment around 40% survived so the treatment group had a greater chance of survival.
+
+
+### (b) 
+
+
+The boxplot for the treatment group shows that although the typical survival of the person in th treatment group is 200 days the IQR is pretty big that means that there were a handful of people of who survived more than two hundred days after the treatment however for the controlled group most peeople died within the 1st 100 days and the IQR is pretty small. Based on the plot the treatment seems to be effective as it does seem to increase the life expectancy. Ofcourse some external facotrs as to the sample size and the age and other health risks of the individuals would impact whether it was the transplant that kept them alive or not but based on the avaialble data we can say that the transplant seems to be effective.
+
+
+### (c) Answer:
+
+### Control Group
+
+
+There are a Total of 34 patients in the Control group out of which 30 died. The Proprtion is Calcultated below
+```{r}
+
+proportionOfDeathInControlGroup<-30/34
+proportionOfDeathInControlGroup
+
+```
+
+### Treatment Group
+
+
+There were a total 69 people in the treatment group out of which 45 died . The Proportion is calculated below.
+
+
+
+```{r}
+proportionOfDeathInTreatmentGroup<-45/69
+proportionOfDeathInTreatmentGroup
+
+```
+
+
+
+### (d) Answer:
+
+
+i) The Claim is being tested is that those people who get transplant have a greater chance of surviving than those who do not.
+
+
+ii) notecards,notecards, 69,34, centered at 0, near 0
+
+
+iii) The highest difference between one of the simulations is 44% which leads us to the following conclusion
+
+
+   
+
+### Independance Model:
+    
+     That the transplant was not really effective in the longetvity of the patients and that we just happen to note the big difference based on chance.
+     
+### Alternative Model
+
+    Thst the transplant was actually effective in keeping people alive that is the reason for such a big difference.
+    
+Normally we will not make an assumption that an event happened by chance so we would actually reject the Indepnadance Model and go with the Alternative Model that the transplant was actually effective in keeping the people alive.
+    
+    
+
+
+
+
+
+
+
+
