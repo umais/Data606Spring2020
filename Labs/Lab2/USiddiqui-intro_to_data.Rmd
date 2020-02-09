@@ -178,7 +178,7 @@ another important idea that we'll return to later.
 **Answer**
 
 
-**WE will do the summary and IQR for Height First**
+**We will do the summary and IQR for Height First**
 
 
 
@@ -209,7 +209,33 @@ age_summary
 
 ```
     
-    
+Relative Frequency distribution for the `gender` is 
+
+```{r}
+table(cdc$gender)/nrow(cdc)
+```
+
+Similarly we can do the relative frequency distribution for the `exerany` variable
+
+```{r}
+table(cdc$exerany)/nrow(cdc)
+```
+
+To answer the question about what proportion of population reports being in excellent health we will first do a summary of general health.
+
+```{r}
+table(cdc$genhlth)
+```
+
+Now to see the proportion of population reporting in excellent health we can just do the following by displaying the relative frequency distribution.
+
+```{r}
+rel_freq<-table(cdc$genhlth)/nrow(cdc)
+
+rel_freq
+```
+
+So we can see from the above distribution that the proportion reporting to be in excellent health are `r rel_freq["excellent"] `
 
 The `table` command can be used to tabulate any number of variables that you 
 provide.  For example, to examine which participants have smoked across each 
@@ -218,6 +244,8 @@ gender, we could use the following.
 ```{r table-smoke-gender, eval=TRUE}
 table(cdc$gender,cdc$smoke100)
 ```
+
+
 
 Here, we see column labels of 0 and 1. Recall that 1 indicates a respondent has
 smoked at least 100 cigarettes. The rows refer to gender. To create a mosaic 

@@ -78,7 +78,7 @@ As we can see in the boxplot the median is matching with the reults in the summa
 
 </div>
 
-### (a) Solution
+### (a) Answer:
 
 This histogram in Figure (a) matches with boxplot in figure 2
 
@@ -87,7 +87,7 @@ The Distribution in the histogram in Figure (a) is symmetrical although it seems
 
 
 
-### (b) Solution
+### (b) Answer:
 
 This Histogram in Figure (b) matches with boxplot in Figure 3
 
@@ -98,7 +98,7 @@ The distribution in this histogram shown in Figure (b) is symmetrical as the mea
 
 
 
-### (c) Solution
+### (c) Answer:
 
 Histogram in Figure (c) mathces with the Boxplot in Figure 1 
 
@@ -147,13 +147,13 @@ For this data I expect the distribution to be symmetrical as there are only a ha
 
 
 
-### (a)
+### (a) Answer:
 
 
 I believe based on the Mosaic Plot that the survival was not independant of the whether the patient got the treatment or not because based on the mosaic plot more than 80 % of the peple who did not recieve the treatment died where as less than 20 percent survived however for the ones that did recieve the treatment around 40% survived so the treatment group had a greater chance of survival.
 
 
-### (b) 
+### (b) Answer:
 
 
 The boxplot for the treatment group shows that although the typical survival of the person in th treatment group is 200 days the IQR is pretty big that means that there were a handful of people of who survived more than two hundred days after the treatment however for the controlled group most peeople died within the 1st 100 days and the IQR is pretty small. Based on the plot the treatment seems to be effective as it does seem to increase the life expectancy. Ofcourse some external facotrs as to the sample size and the age and other health risks of the individuals would impact whether it was the transplant that kept them alive or not but based on the avaialble data we can say that the transplant seems to be effective.
@@ -196,7 +196,7 @@ i) The Claim is being tested is that those people who get transplant have a grea
 ii) notecards,notecards, 69,34, centered at 0, near 0
 
 
-iii) The highest difference between one of the simulations is 44% which leads us to the following conclusion
+iii) The highest difference between one of the simulations is 44% which leads us to the following conclusion. See below.
 
 
    
@@ -207,7 +207,7 @@ iii) The highest difference between one of the simulations is 44% which leads us
      
 ### Alternative Model
 
-    Thst the transplant was actually effective in keeping people alive that is the reason for such a big difference.
+    That the transplant was actually effective in keeping people alive that is the reason for such a big difference.
     
 Normally we will not make an assumption that an event happened by chance so we would actually reject the Indepnadance Model and go with the Alternative Model that the transplant was actually effective in keeping the people alive.
     
