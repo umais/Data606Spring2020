@@ -9,6 +9,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Github Link: <a href="https://github.com/umais/Data606Spring2020/tree/master/Presentation" target=_blank>Presentation Files</a>
+
 ## Problem 2.15:
 
 
@@ -35,7 +37,7 @@ For each of the following, state whether you expect the distribution to be symme
 ### Simulated Sampling:         
 Based on the assumption above I will be doing a simulated Sampling to generate data with a sample size of 10000. We can then observe the results and be able to suggest what the distribution looks like and whether the mean or median would best describe a typical observation.
 
-```{r pressure, echo=TRUE}
+```{r PetsPerHouseHold, echo=TRUE}
 
 SampleSize<-10000
 x <- data.frame("SerialNumber" = 1:SampleSize, 

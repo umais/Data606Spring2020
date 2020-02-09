@@ -7,8 +7,10 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(VennDiagram)
 ```
 
+## Problem 3.6
 **Dice rolls.** (3.6, p. 92) If you roll a pair of fair dice, what is the probability of
 
 (a) getting a sum of 1?
@@ -35,6 +37,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 \clearpage
 
+## Problem 3.8
+
 **Poverty and language**. (3.8, p. 93) The American Community Survey is an ongoing survey that provides data every year to give communities the current information they need to plan investments and services. The 2010 American Community Survey estimates that 14.6% of Americans live below the poverty line, 20.7% speak a language other than English (foreign language) at home, and 4.2% fall into both categories.
 
 (a) Are living below the poverty line and speaking a foreign language at home disjoint?
@@ -44,93 +48,268 @@ knitr::opts_chunk$set(echo = TRUE)
 (e) What percent of Americans live above the poverty line and only speak English at home?
 (f) Is the event that someone lives below the poverty line independent of the event that the person speaks a foreign language at home?
 
+### Answer (a)
+
+No they are not disjoint as 4.2 % fall in both categories and it is possible that if a random person is chosen then that person can be below poverty and speak a language other than English.
+
+### Answer (b)
+
+```{r}
+draw.pairwise.venn(area1 = 14.6, area2 = 20.7, cross.area = 4.2, category = c("Persons below poverty", "Other language"),
+                   lty = rep("blank", 
+    2), fill = c("blue", "red"), alpha = rep(0.5, 2), cat.pos = c(0, 
+    0), cat.dist = rep(0.025, 2))
+                   
+
+```
+
+### Answer (c)
+
+We Know 14.6 people live below the poverty line and 4.2% people are below the poverty line and speak a foreign language.
+
+So the percentage people that are below the poverty line and speak only english are `r 14.6-4.2`%
 
 
+### Answer (d)
+
+We know from the question that there are about 14.6 % people who live below the poverty line and about and 4.2 % people are in both categories below the poverty line and speak a foreign language and 20.7% people speak a foreign language. 
+
+So to calculate the percentage of people that are below poverty line or speak a foreign language we will have to do the following 
+
+
+P(below Poverty)+P(Foriegn Language)-P(both)= `r 14.6+20.7-4.2` %
+
+
+### Answer(e)
+
+In order to calculate this we need to find the probability of People living above the poverty line and then probability of people that only speak english and then we will need to multiply the two probabilities to get the answer
+
+P(People above the poverty line)= `r (1-.14) `
+
+P(Only English)=`r (1-.207)`
+
+P(People above poverty line and Only Speak English)=`r (1-.14)*(1-.207)`
+
+
+### Answer (f)
+
+Yes these two events are independant.
 \clearpage
+
+
+## Problem 3.18 
 
 **Assortative mating**. (3.18, p. 111) Assortative mating is a nonrandom mating pattern where individuals with similar genotypes and/or phenotypes mate with one another more frequently than what would be expected under a random mating pattern. Researchers studying this topic collected data on eye colors of 204 Scandinavian men and their female partners. The table below summarizes the results. For simplicity, we only include heterosexual relationships in this exercise.
 
-\begin{center}
-\begin{tabular}{ll  ccc c}
-                                        &           & \multicolumn{3}{c}{\textit{Partner (female)}} \\
-\cline{3-5}
-                                        &           & Blue  & Brown     & Green     & Total \\
-\cline{2-6}
-                                        & Blue      & 78    & 23        & 13        & 114 \\
-\multirow{2}{*}{\textit{Self (male)}}   & Brown     & 19    & 23        & 12        & 54 \\
-                                        & Green     & 11    & 9         & 16        & 36 \\
-\cline{2-6}
-                                        & Total     & 108   & 55        & 41        & 204
-\end{tabular}
-\end{center}
+<img src="Capture.png">
+
+
+
 (a) What is the probability that a randomly chosen male respondent or his partner has blue eyes?
 (b) What is the probability that a randomly chosen male respondent with blue eyes has a partner with blue eyes?
-(c) Whatistheprobabilitythatarandomlychosenmalerespondentwithbrowneyeshasapartner with blue eyes? What about the probability of a randomly chosen male respondent with green eyes having a partner with blue eyes?
+(c) What is the probability that a randomly chosen male respondent with brown eyes has a partner with blue eyes? What about the probability of a randomly chosen male respondent with green eyes having a partner with blue eyes?
 (d) Does it appear that the eye colors of male respondents and their partners are independent? Explain your reasoning.
 
 
+### Answer (a)
+
+We can see from the table above that there are 114 males with blue eyes.
+
+We also know the total number of Female Partners with Blue Eyes are 108
+
+Out of the 114 Males that have blue eyes 78 Partners also have blue eyes
+
+Total observations are 204
+
+So the 
+P(Male Blue Eyes or Partner Blue Eyes)=P(Males Blue Eyes)+ P(Female Blue Eyes)-P(Female Blue Eyes and Male Blue Eyes)
 
 
---------------------------------------------------------------------------------
-\clearpage
+
+```{r}
+P_Male_Blue_Eyes=114/204
+P_Male_Blue_Eyes
+
+P_Female_Blue_Eyes=108/204
+P_Female_Blue_Eyes
+
+P_Both_Blue_Eyes=78/204
+P_Both_Blue_Eyes
+
+P_MaleBlueEyes_OR_FemaleBlueEyes=P_Male_Blue_Eyes+P_Female_Blue_Eyes-P_Both_Blue_Eyes
+
+P_MaleBlueEyes_OR_FemaleBlueEyes
+```
+
+So the probablity of Either Male or his partner having blue eyes is `r P_MaleBlueEyes_OR_FemaleBlueEyes`
+
+### Answer (b)
+
+So for this one We already know from above that a randomly chosen male from the 114 sample males that have blue eyes the chance that the female also has blue Eyes will be 78/114
+P(Female with Blue Eyes)=(78/114)
+
+The result is `r (78/114)`
+
+### Answer (c)
+
+So for this one We already know from above that a randomly chosen male from the 54 sample males that have brown eyes the chance that the female partner has blue Eyes will be 19/54
+P(From Brown Eyes Male Female with Blue Eyes)=(19/54)
+
+The result is `r (19/54)`
+
+So for this one We already know from above that a randomly chosen male from the 54 sample males that have green eyes the chance that the female partner has blue Eyes will be 11/36
+P(From Brown Eyes Male Female with Blue Eyes)=(11/36)
+
+The result is `r (11/36)`
+
+
+## Answer (d)
+
+
+In this question it is asked if the randomly chosen male and their partners color is independant to answer this question we have to apply the law of independance we can see from part (a) above that the P(Both Male or PArtner having blue eyes is )=71% however for just female having blue eyes the it is 53% in order for there to be independance both probabilities have to be equal therefore we can conclude that they are not independant.
+
+
+
+## Problem 3.26
+
+
 **Books on a bookshelf**. (3.26, p. 114) The table below shows the distribution of books on a bookcase
 based on whether they are nonfiction or fiction and hardcover or paperback.
 
-\begin{center}
-\begin{tabular}{ll  cc c}
-                                &           & \multicolumn{2}{c}{\textit{Format}} \\
-\cline{3-4}
-                                &           & Hardcover     & Paperback     & Total \\
-\cline{2-5}
-\multirow{2}{*}{\textit{Type}}  & Fiction   & 13            & 59            & 72 \\
-                                & Nonfiction& 15            & 8             & 23 \\
-\cline{2-5}
-                                & Total     & 28            & 67            & 95 \\
-\cline{2-5}
-\end{tabular}
-\end{center}
+<img src="book.png">
+
 (a) Find the probability of drawing a hardcover book first then a paperback fiction book second when drawing without replacement.
+
+
 (b) Determine the probability of drawing a fiction book first and then a hardcover book second, when drawing without replacement.
+
+
 (c) Calculate the probability of the scenario in part (b), except this time complete the calculations under the scenario where the first book is placed back on the bookcase before randomly drawing the second book.
+
+
 (d) The final answers to parts (b) and (c) are very similar. Explain why this is the case.
 
 
 
+<b>Answer(a)</b>
 
---------------------------------------------------------------------------------
-\clearpage
+
+
+P(hardcover book) = 28/95 = `r 28/95` = `r (28/95)*100`% 
+
+
+P(book fiction without replacement) = 59/94 = `r 59/94 ` = `r (59/94) *100` %
+
+P(hardcover book and book fiction without replacement)=P(hardcover book) x P(book fiction without replacement) 
+
+Result = `r (28/97)*(59/94)`
+
+
+<b>Answer(b)</b>
+
+P(fiction book)= 72/95 = `r 72/95` = `r (72/95)*100`% 
+
+P(Hardbook) = 28/94 = `r 28/94` = `r (28/94)*100`%
+
+P(Fiction and Hardbook )=(72/95)X(28/95)=`r (72/95)*(28/94)`=`r ((72/95)*(28/94))*100` %
+
+
+<b>Answer(c)</b>
+
+P(fiction book)= 72/95 = `r 72/95` = `r (72/95)*100`% 
+
+P(Hardbook) = 28/95 = `r 28/95` = `r (28/95)*100`%
+
+P(Fiction and Hardbook )=(72/95)X(28/95)=`r (72/95)*(28/95)`=`r ((72/95)*(28/95))*100`%
+
+<b>Answer(d)</b>
+
+The sample was total 95 and the without replacement is 94 so there was only a difference of 1 and the sample was big enough to not show much difference.
+
+
+## Problem 3.34
+
 **Baggage fees**. (3.34, p. 124) An airline charges the following baggage fees: $25 for the first bag and $35 for the second. Suppose 54% of passengers have no checked luggage, 34% have one piece of checked luggage and 12% have two pieces. We suppose a negligible portion of people check more than two bags.
 
 (a) Build a probability model, compute the average revenue per passenger, and compute the corresponding standard deviation.
+
 (b) About how much revenue should the airline expect for a flight of 120 passengers? With what standard deviation? Note any assumptions you make and if you think they are justified.
 
 
+## Answer (a)
 
+
+```{r parta, echo=TRUE}
+
+SampleSize<-10000
+x <- data.frame("SerialNumber" = 1:SampleSize, 
+                "NumberOfLuggage" = c(
+                                      rep(0,.54*SampleSize),
+                                      rep(1,.34*SampleSize),
+                                      rep(2,.12*SampleSize)
+                                      
+                                      ),
+                 "PriceLuggage" = c(
+                                      rep(0,.54*SampleSize),
+                                      rep(25,.34*SampleSize),
+                                      rep(35,.12*SampleSize)
+                                      
+                                      ),
+                stringsAsFactors = FALSE)
+
+barplot(table(x$PriceLuggage))
+
+
+summary(x$PriceLuggage)
+
+
+
+```
+
+We can see in the Summary that an Average Revenue will be `r summary(x$PriceLuggage)["Mean"]`
+
+The Standard Deviation will be `r sd(x$PriceLuggage)`
+
+
+## Answer (b)
+
+```{r partb, echo=TRUE}
+
+NewSample<-120
+x <- data.frame("SerialNumber" = 1:NewSample, 
+                "NumberOfLuggage" = c(
+                                      rep(0,round(.54*NewSample)),
+                                      rep(1,round(.34*NewSample)),
+                                      rep(2,round(.12*NewSample))
+                                      
+                                      ),
+                 "PriceLuggage" = c(
+                                      rep(0,round(.54*NewSample)),
+                                      rep(25,round(.34*NewSample)),
+                                      rep(35,round(.12*NewSample))
+                                      
+                                      ),
+                stringsAsFactors = FALSE)
+
+TotalRevenue=sum(x$PriceLuggage)
+
+StandardDeviation=sd(x$PriceLuggage)
+```
+
+Total Revenue will be `r TotalRevenue `
+
+The Standard Deviation will be `r StandardDeviation `
 
 
 --------------------------------------------------------------------------------
 
 \clearpage
 
+## Problem 3.38
+
 **Income and gender**. (3.38, p. 128) The relative frequency table below displays the distribution of annual total personal income (in 2009 inflation-adjusted dollars) for a representative sample of 96,420,486 Americans. These data come from the American Community Survey for 2005-2009. This sample is comprised of 59% males and 41% females.
 
-\begin{center}
-\begin{tabular}{lr}
-  \hline
-\textit{Income}         & \textit{Total} \\
-  \hline
-\$1 to \$9,999 or loss  & 2.2\% \\
-\$10,000 to \$14,999    & 4.7\% \\
-\$15,000 to \$24,999    & 15.8\% \\
-\$25,000 to \$34,999    & 18.3\% \\
-\$35,000 to \$49,999    & 21.2\% \\
-\$50,000 to \$64,999    & 13.9\% \\
-\$65,000 to \$74,999    & 5.8\% \\
-\$75,000 to \$99,999    & 8.4\% \\
-\$100,000 or more       & 9.7\% \\
-   \hline
-\end{tabular}
-\end{center}
+<img src="income.png">
 
 (a) Describe the distribution of total personal income.
 (b) What is the probability that a randomly chosen US
@@ -141,3 +320,59 @@ Note any assumptions you make.
 make less than $50,000 per year. Use this value to determine whether or not the assumption you made in part (c) is valid.
 
 
+### Answer (a)
+
+```{r}
+NewSample <-96420486
+
+x <- data.frame("SerialNumber" = 1:NewSample, 
+                "IncomeRange" = c(
+                                      rep("1 to $9999 or loss",floor(.022*NewSample)),
+                                      rep("10,000 to 14,999",round(.047*NewSample)),
+                                      rep("15, 000 to 24,999",round(.158*NewSample)),
+
+                                              rep("25,000 to 34,999",round(.183*NewSample)) ,
+              rep("35,000 to 49,999",round(.212*NewSample)) ,
+                            rep("50,000 to 64,999",round(.139*NewSample)) ,
+                            rep("65,000 to 74,999",round(.058*NewSample)) ,
+              rep("75,000 to 99,999",round(.084*NewSample)) ,
+              rep("100,000 or more",round(.097*NewSample)) 
+                                      
+                                      
+                                      ),
+                                      
+                                      
+                stringsAsFactors = FALSE)
+
+barplot(table(x$IncomeRange))
+
+
+```
+
+Distribution looks like it is symmetric
+
+
+### Answer (b)
+
+P(Income Less Than 50,000) = 2.2 + 4.7 + 15.8 + 18.3 + 21.2 = `r 2.2 + 4.7 + 15.8 + 18.3 + 21.2` %
+
+## Answer (c)
+Assuming Income and Female are independant events we can calculate the probability like below.
+P(Income<50,000 and gender = female) = P(Income< $50,000) X P(gender= female) = 0.622 x 0.410 = `r 0.622 * 0.410 ` = `r 0.622 * 0.410*100` %
+
+## Answer (d)
+
+The 71.8 % of total females make less than 50,000 . However the probablity in b is calculated based on assumption of independance but now this number gives dependancy so the new probability will be below.
+
+```{r}
+
+women=(41*96420486)/100
+
+
+womenMakingLess=(women*71.8)/100
+lt50000 = (62.2*96420486)/100 
+
+womenMakingLess/lt50000
+```
+
+The assumption made is not valid because these to events are not independant they are dependant on one another.
